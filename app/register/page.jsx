@@ -24,29 +24,30 @@ export default function Register () {
           setMessage("Passwords do not match.");
           return;
         }
-    
-        const token = "your-bearer-token"; // Replace with the actual token
-    
+        
         try {
           const response = await fetch("https://h5ck35.pythonanywhere.com/api/register/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
               username: formData.username,
               email: formData.email,
               password: formData.password,
+              password_confirm: formData.confirmPassword
             }),
           });
     
           if (response.ok) {
             const result = await response.json();
-            setMessage(result.message || "Registration successful!");
+            const token = result.tokens.access
+            document.cookie = `access_token=${token}`
+            setMessage(result.message || "Registration successful! And Youre Logged in");
           } else {
             const errorData = await response.json();
-            setMessage(errorData.message || "Registration failed.");
+            console.log(errorData)
+            setMessage(errorData.message|| "Registration failed. check console");
           }
         } catch (error) {
           console.error("Error submitting registration:", error);
@@ -56,6 +57,7 @@ export default function Register () {
     
     return (<>
     <>{message}</>
+    <br/><br /><br /><br />
         <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
