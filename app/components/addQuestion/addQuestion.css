@@ -123,3 +123,17 @@ textarea:focus {
   color: white;
   background-color: #4e53a2;
 }
+
+.add-tag-input {
+  position: relative;
+  overflow: hidden;
+}
+.add-tag-input p {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.add-tag-input p:hover {
+  background-color: #8187d1;
+}

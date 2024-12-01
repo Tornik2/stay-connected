@@ -33,7 +33,11 @@ export default function AddQUestion() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // submit logic here
-    add(url, token, questionFormData);
+
+    const questionData = tags.map((tag) => {
+      return { name: tag };
+    });
+    add(url, token, questionData);
 
     console.log(isFormVisible);
   };
@@ -88,13 +92,13 @@ export default function AddQUestion() {
             <label htmlFor="tag">Tags:</label>
             <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
               <Tags tags={tags} />
-              <div>
+              <div className="add-tag-input">
                 <input
                   type="text"
                   name="tag"
                   id="tag"
                   onChange={handleChange}
-                  value={questionFormData.tags}
+                  value={questionFormData.tag}
                   required
                 />
                 <p
@@ -103,6 +107,9 @@ export default function AddQUestion() {
                     setTags((prev) => {
                       console.log(tags);
                       return [...prev, questionFormData.tag];
+                    });
+                    setQuestionFormData((prev) => {
+                      return { ...prev, tag: "" };
                     });
                   }}
                 >
