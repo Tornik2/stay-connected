@@ -11,7 +11,18 @@ export default function Header() {
             <img className="logo" src="/android-chrome-192x192.png" />
           </Link>
         </div>
-        <AddQUestion />
+        <div className="header-right-side">
+          <AddQUestion />
+          <div className="auth_panel">
+            <Link href="/login" className="nav_login">
+              Log in
+            </Link>
+            <span>/</span>
+            <Link href="/register" className="nav_login">
+              Register
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );

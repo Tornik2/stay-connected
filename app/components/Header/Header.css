@@ -10,3 +10,28 @@ header {
   width: 40px;
   cursor: pointer;
 }
+.header-right-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.auth_panel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav_register,
+.nav_login {
+  font-size: 16px;
+  color: #d3d4e8;
+}
+
+a:hover {
+  color: yellow;
+}
+
+span {
+  color: yellow;
+}
