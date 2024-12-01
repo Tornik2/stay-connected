@@ -10,7 +10,10 @@ export default function Questions({ questionData }) {
     return <Question key={index} body={question.body} />;
   });
 
-  return (<>
-  <AddQUestion/>
-  {questionList}</>);
+  return (
+    <>
+      <AddQUestion />
+      {questionList}
+    </>
+  );
 }
