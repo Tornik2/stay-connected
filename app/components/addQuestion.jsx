@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function AddQUestion() {
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const [questionFormData, setQuestionFormData] = useState({
     title: "",
     body: "",
@@ -20,9 +21,14 @@ export default function AddQUestion() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // submit logic here
+    toggleForm();
     console.log(questionFormData.title, questionFormData.body);
   };
 
+  const toggleForm = () => {
+    setIsFormVisible((prev) => !prev);
+  };
   return (
     <>
       <button onClick={handleSubmit}>add question</button>
