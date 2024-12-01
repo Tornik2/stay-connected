@@ -1,14 +1,22 @@
 "use client";
 import "./addQuestion.css";
-import { useState } from "react";
+import { add } from "./utils";
+import { useState, useEffect } from "react";
 
 export default function AddQUestion() {
+  const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [questionFormData, setQuestionFormData] = useState({
-    title: "",
-    body: "",
-    tags: "",
+    subject: "",
+    text: "",
+    tags: { name: "Front-End", name: "Back-End" },
   });
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("access_token");
+    setToken(storedToken);
+  }, []);
+  const url = "http://7051-138-199-7-236.ngrok-free.app/api/questions/";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +27,12 @@ export default function AddQUestion() {
       };
     });
   };
-
+  /////droebit accestokeni ase
   const handleSubmit = (e) => {
     e.preventDefault();
     // submit logic here
-    toggleForm();
+    add(url, token, questionFormData);
+
     console.log(isFormVisible);
   };
 
@@ -32,7 +41,7 @@ export default function AddQUestion() {
   };
   return (
     <div>
-      <button className="add_question" onClick={handleSubmit}>
+      <button className="add_question" onClick={() => toggleForm()}>
         <img src="/add-question.png" />
       </button>
       <div className={`form_container  ${isFormVisible && "active"}`}>
@@ -50,22 +59,22 @@ export default function AddQUestion() {
           <div></div>
         </div>
         <form className="Add_Question_Form">
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="subject">subject:</label>
           <input
             type="text"
-            name="title"
-            id="title"
+            name="subject"
+            id="subject"
             onChange={handleChange}
-            value={questionFormData.title}
+            value={questionFormData.subject}
             required
           />
-          <label htmlFor="body">Body:</label>
+          <label htmlFor="text">subject:</label>
           <input
             type="text"
-            name="body"
-            id="body"
+            name="text"
+            id="text"
             onChange={handleChange}
-            value={questionFormData.body}
+            value={questionFormData.text}
             required
           />
           <label htmlFor="tag">Tags:</label>
@@ -74,9 +83,10 @@ export default function AddQUestion() {
             name="tag"
             id="tag"
             onChange={handleChange}
-            value={questionFormData.body}
+            value={questionFormData.tags}
             required
           />
+          <button onClick={handleSubmit}>ADd</button>
         </form>
       </div>
     </div>

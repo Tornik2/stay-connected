@@ -35,7 +35,11 @@ export default function Register() {
         const result = await response.json();
 
         console.log(result);
-        document.cookie = `access_token=${result.access}`;
+        localStorage.setItem("access_token", result.access);
+      } else {
+        const errorData = await response.json();
+        console.log(errorData.detail);
+        setMessage(errorData.detail);
       }
     } catch (error) {
       console.log(error);
