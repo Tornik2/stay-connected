@@ -1,3 +1,7 @@
-export default function Question({ body }) {
-  return <div>{body}</div>;
+export default function Question({ body, id }) {
+  return (
+    <div>
+      {body} da {id}
+    </div>
+  );
 }
