@@ -30,8 +30,10 @@ export default function AddQUestion() {
     setIsFormVisible((prev) => !prev);
   };
   return (
-    <>
-      <button onClick={handleSubmit}>add question</button>
+    <div>
+      <button className="add_question" onClick={handleSubmit}>
+        <img src="/add-question.png" />
+      </button>
       <form className={`Add_Question_Form ${isFormVisible && "active"}`}>
         <input
           type="text"
@@ -50,6 +52,6 @@ export default function AddQUestion() {
           required
         />
       </form>
-    </>
+    </div>
   );
 }

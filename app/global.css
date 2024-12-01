@@ -10,6 +10,9 @@ body {
   overflow-x: hidden;
   color: #333; /* Default text color */
 }
+img {
+  display: block;
+}
 
 /* Links */
 a {
@@ -20,23 +23,13 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Global Containers  ??????? TBA*/
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Global Padding*/
+.global-padding-sides {
+  padding: 15px 25px;
 }
 
-/* Global Buttons ?????????????? TBA*/
 button {
-  background-color: #0070f3;
-  color: #fff;
   border: none;
-  padding: 10px 20px;
+  background: none;
   cursor: pointer;
-  border-radius: 4px;
-}
-
-button:hover {
-  background-color: #005bb5;
 }

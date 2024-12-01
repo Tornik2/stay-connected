@@ -1,11 +1,35 @@
 .Add_Question_Form {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
   opacity: 0;
   visibility: hidden;
   transform: translateY(100vh);
   transition: 0.3s ease;
 }
 .Add_Question_Form.active {
+  position: fixed;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+
+.add_question {
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  position: relative;
+  background-color: #34bd3f;
+}
+
+.add_question img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.add_question img:hover {
+  opacity: 0.8;
+  border: 1px solid #4f539c;
 }
