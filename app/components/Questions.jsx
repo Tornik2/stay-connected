@@ -9,6 +9,7 @@ export default function Questions({ questionData }) {
   useEffect(() => {
     setQuestions(questionData);
   }, [questionData]);
+
   if (questions) {
     questionList = questions.map((question, index) => {
       return <Question key={index} body={question.text} id={question.id} />;
@@ -17,10 +18,5 @@ export default function Questions({ questionData }) {
     questionList = "Sorry no questions";
   }
 
-  return (
-    <>
-      <AddQUestion />
-      {questionList}
-    </>
-  );
+  return <>{questionList}</>;
 }

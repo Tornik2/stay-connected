@@ -1,15 +1,17 @@
 "use client";
 import "./addQuestion.css";
 import { add } from "./utils";
+import Tags from "../Tags/Tags";
 import { useState, useEffect } from "react";
 
 export default function AddQUestion() {
   const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [tags, setTags] = useState(["Front-End"]);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
     text: "",
-    tags: { name: "Front-End", name: "Back-End" },
+    tag: "",
   });
 
   useEffect(() => {
@@ -56,37 +58,62 @@ export default function AddQUestion() {
             </div>
           </button>
           <h1 className="heading">add question</h1>
-          <div></div>
+          <div style={{ width: "30px" }}></div>
         </div>
-        <form className="Add_Question_Form">
-          <label htmlFor="subject">subject:</label>
-          <input
-            type="text"
-            name="subject"
-            id="subject"
-            onChange={handleChange}
-            value={questionFormData.subject}
-            required
-          />
-          <label htmlFor="text">subject:</label>
-          <input
-            type="text"
-            name="text"
-            id="text"
-            onChange={handleChange}
-            value={questionFormData.text}
-            required
-          />
-          <label htmlFor="tag">Tags:</label>
-          <input
-            type="text"
-            name="tag"
-            id="tag"
-            onChange={handleChange}
-            value={questionFormData.tags}
-            required
-          />
-          <button onClick={handleSubmit}>ADd</button>
+        <form className="Add_Question_Form global-padding-sides">
+          <div className="form-input">
+            <label htmlFor="subject">Question Title:</label>
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              onChange={handleChange}
+              value={questionFormData.subject}
+              required
+            />
+          </div>
+          <div className="form-input">
+            <label htmlFor="text">Question Description:</label>
+            <textarea
+              id="text"
+              name="text"
+              rows="5"
+              placeholder="Type your question here..."
+              value={questionFormData.text}
+              onChange={handleChange}
+              required
+            ></textarea>
+          </div>
+          <div className="form-input">
+            <label htmlFor="tag">Tags:</label>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <Tags tags={tags} />
+              <div>
+                <input
+                  type="text"
+                  name="tag"
+                  id="tag"
+                  onChange={handleChange}
+                  value={questionFormData.tags}
+                  required
+                />
+                <p
+                  className="cta-add-tag"
+                  onClick={() => {
+                    setTags((prev) => {
+                      console.log(tags);
+                      return [...prev, questionFormData.tag];
+                    });
+                  }}
+                >
+                  +
+                </p>
+              </div>
+            </div>
+          </div>
+          <button className="create-question-btn" onClick={handleSubmit}>
+            Create Question
+          </button>
         </form>
       </div>
     </div>
