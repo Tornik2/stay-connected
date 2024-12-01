@@ -1,0 +1,11 @@
+.Add_Question_Form {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100vh);
+  transition: 0.3s ease;
+}
+.Add_Question_Form.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}

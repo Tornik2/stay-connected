@@ -1,5 +1,5 @@
 "use client";
-
+import "./addQuestion.css";
 import { useState } from "react";
 
 export default function AddQUestion() {
@@ -23,7 +23,7 @@ export default function AddQUestion() {
     e.preventDefault();
     // submit logic here
     toggleForm();
-    console.log(questionFormData.title, questionFormData.body);
+    console.log(isFormVisible);
   };
 
   const toggleForm = () => {
@@ -32,7 +32,7 @@ export default function AddQUestion() {
   return (
     <>
       <button onClick={handleSubmit}>add question</button>
-      <form className="Add_Question_Form">
+      <form className={`Add_Question_Form ${isFormVisible && "active"}`}>
         <input
           type="text"
           name="title"

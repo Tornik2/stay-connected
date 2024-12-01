@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Question from "./Question";
-import AddQUestion from "./addQuestion";
+import AddQUestion from "./addQuestion/addQuestion";
 
 export default function Questions({ questionData }) {
   const [questions, setQuestions] = useState(questionData);
