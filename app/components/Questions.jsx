@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Question from "./Question";
+import AddQUestion from "./addQuestion";
 
 export default function Questions({ questionData }) {
   const [questions, setQuestions] = useState(questionData);
@@ -9,5 +10,7 @@ export default function Questions({ questionData }) {
     return <Question key={index} body={question.body} />;
   });
 
-  return <>{questionList}</>;
+  return (<>
+  <AddQUestion/>
+  {questionList}</>);
 }
