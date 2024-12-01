@@ -1,0 +1,44 @@
+/* Reset and Normalize */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #333; /* Default text color */
+  }
+  
+  
+  /* Links */
+  a {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Global Containers  ??????? TBA*/
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Global Buttons ?????????????? TBA*/
+  button {
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
