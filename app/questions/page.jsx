@@ -1,4 +1,4 @@
-import Questions from "../components/Questions.jsx";
+import Questions from "../components/Questions/Questions.jsx";
 import { fetchQuestions } from "./utils.js";
 import questionsDat from "../dommy.js";
 
