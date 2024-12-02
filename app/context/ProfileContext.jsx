@@ -11,31 +11,33 @@ export function ProfileProvider({ children }) {
   const logout = () => {
     setProfile(null);
   };
+  //Function to fetch the user data
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch("/api/profile");
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch profile");
+      }
+
+      const profileData = await response.json();
+      setProfile(profileData);
+      console.log(profileData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   // Fetch the profile data when the component mounts
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch("/api/profile");
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch profile");
-        }
-
-        const profileData = await response.json();
-        setProfile(profileData);
-        console.log(profileData);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchProfile();
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ profile, loading, error, logout }}>
+    <ProfileContext.Provider
+      value={{ profile, loading, error, logout, fetchProfile }}
+    >
       {children}
     </ProfileContext.Provider>
   );

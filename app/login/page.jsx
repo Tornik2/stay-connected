@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { useProfile } from "../context/ProfileContext";
 export default function Register() {
+  const { fetchProfile } = useProfile();
   const [message, setMessage] = useState("Log in");
   const [formData, setFormData] = useState({
     email: "",
@@ -33,10 +34,7 @@ export default function Register() {
         }),
       });
       if (response.ok) {
-        const result = await response.json();
-
-        console.log(result);
-        localStorage.setItem("access_token", result.access); // Droebit
+        fetchProfile();
         router.push("/questions");
       } else {
         const errorData = await response.json();

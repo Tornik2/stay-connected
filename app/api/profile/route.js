@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export async function GET() {
+export async function GET(request) {
   try {
     const cookieStore = await cookies();
     const accessToken = await cookieStore.get("accessToken")?.value; // accessToken
     console.log(accessToken);
     if (!accessToken) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      return NextResponse.redirect(new URL("/login", request.url));
     }
 
     const response = await fetch(
