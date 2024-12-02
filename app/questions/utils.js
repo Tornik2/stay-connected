@@ -1,10 +1,10 @@
-import dommy from "../dommy";
 const fetchQuestions = async (url) => {
   let data = "";
   try {
     const response = await fetch(url);
     if (response.ok) {
       data = await response.json();
+      console.log(data);
     } else {
       const errorData = await response.json();
       console.log(errorData);

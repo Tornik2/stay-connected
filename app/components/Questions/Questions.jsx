@@ -15,8 +15,14 @@ export default function Questions({ questionData }) {
       return <Question key={index} body={question.text} id={question.id} />;
     });
   } else {
-    questionList = "Sorry no questions";
+    questionList = "";
   }
 
-  return <>{questionList}</>;
+  return (
+    <>
+      <div className="padding-global-sides">
+        {questionList ? questionList : "Loading"}
+      </div>
+    </>
+  );
 }

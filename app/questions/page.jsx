@@ -1,9 +1,8 @@
 import Questions from "../components/Questions/Questions.jsx";
 import { fetchQuestions } from "./utils.js";
-import questionsDat from "../dommy.js";
 
 export default async function questions() {
-  const url = "http://7051-138-199-7-236.ngrok-free.app/api/questions/";
+  const url = "https://h5ck35.pythonanywhere.com/api/questions/";
   const questionData = await fetchQuestions(url);
   return (
     <>

@@ -13,12 +13,11 @@ export default function AddQUestion() {
     text: "",
     tag: "",
   });
-
   useEffect(() => {
     const storedToken = localStorage.getItem("access_token");
     setToken(storedToken);
   }, []);
-  const url = "http://7051-138-199-7-236.ngrok-free.app/api/questions/";
+  const url = "https://h5ck35.pythonanywhere.com/api/questions/";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,12 +33,12 @@ export default function AddQUestion() {
     e.preventDefault();
     // submit logic here
 
-    const questionData = tags.map((tag) => {
-      return { name: tag };
-    });
+    const questionData = { ...questionFormData, tags };
+
     add(url, token, questionData);
 
     console.log(isFormVisible);
+    console.log();
   };
 
   const toggleForm = () => {
