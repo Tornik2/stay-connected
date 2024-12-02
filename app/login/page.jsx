@@ -5,6 +5,7 @@ import { useProfile } from "../context/ProfileContext";
 export default function Register() {
   const { fetchProfile } = useProfile();
   const [message, setMessage] = useState("Log in");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -20,8 +21,8 @@ export default function Register() {
 
   //Submit
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-
     try {
       const response = await fetch("/api/login/", {
         method: "POST",
@@ -34,9 +35,10 @@ export default function Register() {
         }),
       });
       if (response.ok) {
-        fetchProfile();
+        await fetchProfile();
         router.push("/questions");
       } else {
+        setLoading(false);
         const errorData = await response.json();
         console.log(errorData.detail);
         setMessage(errorData.detail);
@@ -47,26 +49,32 @@ export default function Register() {
   };
   return (
     <>
-      {message}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+      {loading ? (
+        <>LOADING</>
+      ) : (
+        <>
+          {message}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </>
+      )}
     </>
   );
 }
