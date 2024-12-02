@@ -4,7 +4,6 @@ const fetchQuestions = async (url) => {
     const response = await fetch(url);
     if (response.ok) {
       data = await response.json();
-      console.log(data);
     } else {
       const errorData = await response.json();
       console.log(errorData);

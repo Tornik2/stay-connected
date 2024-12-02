@@ -2,9 +2,12 @@
 import { useState, useEffect } from "react";
 import Question from "../Question/Question";
 import AddQUestion from "../addQuestion/addQuestion";
+import { useProfile } from "../../context/ProfileContext";
 
 export default function Questions({ questionData }) {
+  const { profile, loading, error } = useProfile();
   const [questions, setQuestions] = useState("");
+  console.log(loading);
   let questionList = "";
   useEffect(() => {
     setQuestions(questionData);
