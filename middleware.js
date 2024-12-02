@@ -14,5 +14,5 @@ export function middleware(request) {
 
 // Protected Routes
 export const config = {
-  matcher: ["/questions", "/"],
+  matcher: ["/", "/questions"],
 };

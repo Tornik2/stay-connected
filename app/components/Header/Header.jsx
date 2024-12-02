@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import "./Header.css";
 import AddQUestion from "../addQuestion/addQuestion";
+import { useProfile } from "../../context/ProfileContext";
 
 export default function Header() {
+  const { profile, loading, error } = useProfile();
+
   return (
     <header className="global-padding-sides">
       <div className="container">
@@ -13,15 +18,21 @@ export default function Header() {
         </div>
         <div className="header-right-side">
           <AddQUestion />
-          <div className="auth_panel">
+          {!profile ? (
+            <div className="auth_panel">
+              <Link href="/login" className="nav_login">
+                Log in
+              </Link>
+              <span>/</span>
+              <Link href="/register" className="nav_register">
+                Register
+              </Link>
+            </div>
+          ) : (
             <Link href="/login" className="nav_login">
-              Log in
+              Log out
             </Link>
-            <span>/</span>
-            <Link href="/register" className="nav_login">
-              Register
-            </Link>
-          </div>
+          )}
         </div>
       </div>
     </header>

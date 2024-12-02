@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 export async function GET() {
   try {
     const cookieStore = await cookies();
-    const accessToken = cookieStore.get("accessToken")?.value; // accessToken
+    const accessToken = await cookieStore.get("accessToken")?.value; // accessToken
 
     if (!accessToken) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
