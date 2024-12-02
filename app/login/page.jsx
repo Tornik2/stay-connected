@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [message, setMessage] = useState("Log in");
@@ -7,6 +8,7 @@ export default function Register() {
     email: "",
     password: "",
   });
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,28 +16,28 @@ export default function Register() {
       return { ...prev, [name]: value };
     });
   };
+
+  //Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "https://h5ck35.pythonanywhere.com/api/token/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
+      const response = await fetch("/api/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
       if (response.ok) {
         const result = await response.json();
 
         console.log(result);
-        localStorage.setItem("access_token", result.access);
+        localStorage.setItem("access_token", result.access); // Droebit
+        router.push("/questions");
       } else {
         const errorData = await response.json();
         console.log(errorData.detail);
