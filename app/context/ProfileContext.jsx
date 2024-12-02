@@ -8,7 +8,9 @@ export function ProfileProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const logout = () => {
+    setProfile(null);
+  };
   // Fetch the profile data when the component mounts
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,7 +25,6 @@ export function ProfileProvider({ children }) {
         setProfile(profileData);
         console.log(profileData);
       } catch (err) {
-        console.log(err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -34,7 +35,7 @@ export function ProfileProvider({ children }) {
   }, []);
 
   return (
-    <ProfileContext.Provider value={{ profile, loading, error }}>
+    <ProfileContext.Provider value={{ profile, loading, error, logout }}>
       {children}
     </ProfileContext.Provider>
   );

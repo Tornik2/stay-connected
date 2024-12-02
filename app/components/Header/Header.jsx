@@ -4,6 +4,7 @@ import Link from "next/link";
 import "./Header.css";
 import AddQUestion from "../addQuestion/addQuestion";
 import { useProfile } from "../../context/ProfileContext";
+import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
 export default function Header() {
   const { profile, loading, error } = useProfile();
@@ -29,9 +30,7 @@ export default function Header() {
               </Link>
             </div>
           ) : (
-            <Link href="/login" className="nav_login">
-              Log out
-            </Link>
+            <LogoutBtn />
           )}
         </div>
       </div>
