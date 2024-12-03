@@ -42,11 +42,11 @@ export default function AddQUestion() {
     setIsFormVisible((prev) => !prev);
   };
   return (
-    <div>
+    <div className="">
       <button className="add_question" onClick={() => toggleForm()}>
         <img src="/add-question.png" />
       </button>
-      <div className={`form_container  ${isFormVisible && "active"}`}>
+      <div className={`form_container ${isFormVisible && "active"}`}>
         <div className="add_question_header global-padding-sides">
           <button onClick={toggleForm}>
             <div className="arrow_wrapper">

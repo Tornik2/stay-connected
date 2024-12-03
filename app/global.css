@@ -44,3 +44,28 @@ a {
 textarea {
   resize: none;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
+}
+/* HEADER FOOTER  */
+header,
+footer {
+  background-color: #4e53a2;
+}
+/* custom class for max width */
+.max-width {
+  max-width: 990px;
+  margin: 0 auto;
+}
+
+/* LOGO */
+.logo {
+  width: 40px;
+  cursor: pointer;
+}

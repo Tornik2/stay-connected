@@ -10,7 +10,7 @@ export default function Header() {
   const { profile, loading, error } = useProfile();
   return (
     <header className="global-padding-sides">
-      <div className="container">
+      <div className="container max-width">
         <div>
           <Link href="/questions">
             <img className="logo" src="/android-chrome-192x192.png" />

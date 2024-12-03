@@ -29,21 +29,21 @@
 .form_container {
   background-color: #ffffff;
   position: fixed;
-  left: 0;
+  left: 50%;
   top: 0;
   width: 100vw;
   height: 100vh;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(100vh);
   transition: 0.3s ease;
+  max-width: 990px;
+  transform: translateX(-50%) translateY(100%);
 }
 
 .form_container.active {
-  position: fixed;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .Add_Question_Form {
