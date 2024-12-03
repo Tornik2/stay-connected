@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function AddQUestion() {
   const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [tags, setTags] = useState(["Front-End"]);
+  const [tags, setTags] = useState([]);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
     text: "",
