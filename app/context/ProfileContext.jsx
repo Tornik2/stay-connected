@@ -24,7 +24,6 @@ export function ProfileProvider({ children }) {
       setProfile(profileData);
       console.log(profileData);
     } catch (err) {
-      console.log(err);
       setError(err.message);
     } finally {
       setLoading(false);
