@@ -3,6 +3,7 @@ import Question from "../Question/Question";
 import "./Questions.css";
 import { useState, useEffect } from "react";
 import { useProfile } from "../../context/ProfileContext";
+import Tags from "../Tags/Tags";
 
 export default function Questions({ questionData }) {
   const { profile, loading, error } = useProfile();
@@ -41,7 +42,22 @@ export default function Questions({ questionData }) {
             name="search"
           />
         </div>
-        <div className="filter-by-tags">{"tags here"}</div>
+        <div className="filter-by-tags">
+          {
+            <Tags
+              tags={[
+                "one",
+                "Phyton",
+                "Front",
+                "Back",
+                "This",
+                "one",
+                "TWO",
+                "Front",
+              ]}
+            />
+          }
+        </div>
       </div>
       <div className="questions-list">
         {questionList ? questionList : "Loading"}

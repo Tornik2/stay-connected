@@ -12,9 +12,9 @@ export default function Tags({ tags }) {
     tagList = newTags.map((tag, index) => {
       const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
       return (
-        <div key={index} className="tag">
+        <p key={index} className="tag">
           {capitalizedTag}
-        </div>
+        </p>
       );
     });
   }
