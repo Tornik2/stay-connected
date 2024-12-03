@@ -17,7 +17,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="header-right-side">
-          <AddQUestion />
+          {profile && <AddQUestion />}
           {!profile ? (
             <div className="auth_panel">
               <Link href="/login" className="nav_login">
