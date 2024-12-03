@@ -1,0 +1,65 @@
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section_heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.section_heading img {
+  width: 20px;
+  height: 20px;
+}
+.section_name {
+  font-size: 20px;
+}
+
+.filter-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-by-author {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+}
+
+.filter-by-author div {
+  flex-grow: 1;
+  border-radius: 12px;
+  padding: 12px 24px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  background-color: #777e99;
+  cursor: pointer;
+}
+
+.filter-by-author div:hover {
+  opacity: 0.85;
+}
+
+.filter-by-author div.active {
+  background-color: #4e53a2;
+}
+
+/* search */
+.search-input .search {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #f6f6f6;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.search:focus {
+  border: 1px solid #e3e2e2;
+  background-color: #fff;
+}
