@@ -1,4 +1,5 @@
 "use client";
+
 import "./addQuestion.css";
 import { add } from "./utils";
 import Tags from "../Tags/Tags";
@@ -14,8 +15,20 @@ export default function AddQUestion() {
     tag: "",
   });
   useEffect(() => {
-    const storedToken = localStorage.getItem("access_token");
-    setToken(storedToken);
+    //get cookie from server side
+    const fetchCookie = async () => {
+      try {
+        const response = await fetch("/api/cookies");
+        if (response.ok) {
+          const result = await response.json();
+          const { accessToken } = result;
+          setToken(accessToken);
+        }
+      } catch (error) {
+        console.error("Error fetching cookie:", err);
+      }
+    };
+    fetchCookie();
   }, []);
   const url = "https://h5ck35.pythonanywhere.com/api/questions/";
 
@@ -34,7 +47,11 @@ export default function AddQUestion() {
     // submit logic here
 
     const questionData = { ...questionFormData, tags };
-
+    setQuestionFormData({
+      subject: "",
+      text: "",
+      tag: "",
+    });
     add(url, token, questionData);
   };
 

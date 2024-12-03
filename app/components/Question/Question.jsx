@@ -43,7 +43,6 @@ export default function Question({ question }) {
     color: isHovered && "#4c4fe8",
   };
 
-  console.log(question);
   return (
     <div className="question">
       <div className="top-third">
