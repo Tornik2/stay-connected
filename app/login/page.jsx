@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "../context/ProfileContext";
-export default function Register() {
-  const { fetchProfile } = useProfile();
+
+export default function Login() {
+  const { fetchProfile, profile } = useProfile();
   const [message, setMessage] = useState("Log in");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({

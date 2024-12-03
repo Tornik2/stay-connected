@@ -36,9 +36,6 @@ export default function AddQUestion() {
     const questionData = { ...questionFormData, tags };
 
     add(url, token, questionData);
-
-    console.log(isFormVisible);
-    console.log();
   };
 
   const toggleForm = () => {

@@ -8,7 +8,6 @@ import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
 export default function Header() {
   const { profile, loading, error } = useProfile();
-  console.log(profile);
   return (
     <header className="global-padding-sides">
       <div className="container">

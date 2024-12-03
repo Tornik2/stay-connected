@@ -5,7 +5,6 @@ export async function GET(request) {
   try {
     const cookieStore = await cookies();
     const accessToken = await cookieStore.get("accessToken")?.value; // accessToken
-    console.log(accessToken);
     if (!accessToken) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
