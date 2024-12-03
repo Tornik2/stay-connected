@@ -22,7 +22,7 @@ build:
     - tar -czf app.tar.gz *
     - scp app.tar.gz $HOST_USER@$APP_HOST:$APP_DIR
     - ssh $HOST_USER@$APP_HOST "cd $APP_DIR && tar -xzf app.tar.gz && rm -f app.tar.gz"
-    - ssh r$HOST_USER@$APP_HOST "cd $APP_DIR && docker build -t stay_connected:latest ."
+    - ssh $HOST_USER@$APP_HOST "cd $APP_DIR && docker build -t stay_connected:latest ."
 
 deploy:
   stage: deploy
