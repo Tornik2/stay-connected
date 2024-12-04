@@ -1,10 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "../context/ProfileContext";
-export default function Register() {
-  const { fetchProfile } = useProfile();
-  const [message, setMessage] = useState("Log in");
+
+export default function Login() {
+  const { fetchProfile, profile } = useProfile();
+  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -40,8 +41,8 @@ export default function Register() {
       } else {
         setLoading(false);
         const errorData = await response.json();
-        console.log(errorData.detail);
-        setMessage(errorData.detail);
+        console.log(errorData.error);
+        setMessage(errorData.error + ", Wrong Credentials ");
       }
     } catch (error) {
       console.log(error);
@@ -49,32 +50,36 @@ export default function Register() {
   };
   return (
     <>
-      {loading ? (
-        <>LOADING</>
-      ) : (
-        <>
-          {message}
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit">Login</button>
-          </form>
-        </>
-      )}
+      <div className="global-padding-sides">
+        <div className="container max-width">
+          {loading ? (
+            <>LOADING</>
+          ) : (
+            <>
+              <div style={{ color: "red" }}>{message}</div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button type="submit">Login</button>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 }

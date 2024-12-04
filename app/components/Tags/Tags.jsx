@@ -2,7 +2,7 @@
 import "./Tags.css";
 import { useState, useEffect } from "react";
 
-export default function Tags({ tags }) {
+export default function Tags({ tags, tagStyle }) {
   const [newTags, setNewTags] = useState([]);
   useEffect(() => {
     setNewTags(tags);
@@ -12,9 +12,9 @@ export default function Tags({ tags }) {
     tagList = newTags.map((tag, index) => {
       const capitalizedTag = tag.charAt(0).toUpperCase() + tag.slice(1);
       return (
-        <div key={index} className="tag">
+        <p key={index} className="tag" style={tagStyle && tagStyle}>
           {capitalizedTag}
-        </div>
+        </p>
       );
     });
   }

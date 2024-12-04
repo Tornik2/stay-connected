@@ -8,17 +8,16 @@ import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
 export default function Header() {
   const { profile, loading, error } = useProfile();
-  console.log(profile);
   return (
     <header className="global-padding-sides">
-      <div className="container">
+      <div className="container max-width">
         <div>
           <Link href="/questions">
             <img className="logo" src="/android-chrome-192x192.png" />
           </Link>
         </div>
         <div className="header-right-side">
-          <AddQUestion />
+          {profile && <AddQUestion />}
           {!profile ? (
             <div className="auth_panel">
               <Link href="/login" className="nav_login">

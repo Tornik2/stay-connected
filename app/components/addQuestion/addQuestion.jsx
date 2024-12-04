@@ -1,4 +1,5 @@
 "use client";
+
 import "./addQuestion.css";
 import { add } from "./utils";
 import Tags from "../Tags/Tags";
@@ -7,15 +8,27 @@ import { useState, useEffect } from "react";
 export default function AddQUestion() {
   const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [tags, setTags] = useState(["Front-End"]);
+  const [tags, setTags] = useState([]);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
     text: "",
     tag: "",
   });
   useEffect(() => {
-    const storedToken = localStorage.getItem("access_token");
-    setToken(storedToken);
+    //get cookie from server side
+    const fetchCookie = async () => {
+      try {
+        const response = await fetch("/api/cookies");
+        if (response.ok) {
+          const result = await response.json();
+          const { accessToken } = result;
+          setToken(accessToken);
+        }
+      } catch (error) {
+        console.error("Error fetching cookie:", err);
+      }
+    };
+    fetchCookie();
   }, []);
   const url = "https://h5ck35.pythonanywhere.com/api/questions/";
 
@@ -34,22 +47,23 @@ export default function AddQUestion() {
     // submit logic here
 
     const questionData = { ...questionFormData, tags };
-
+    setQuestionFormData({
+      subject: "",
+      text: "",
+      tag: "",
+    });
     add(url, token, questionData);
-
-    console.log(isFormVisible);
-    console.log();
   };
 
   const toggleForm = () => {
     setIsFormVisible((prev) => !prev);
   };
   return (
-    <div>
+    <div className="">
       <button className="add_question" onClick={() => toggleForm()}>
         <img src="/add-question.png" />
       </button>
-      <div className={`form_container  ${isFormVisible && "active"}`}>
+      <div className={`form_container ${isFormVisible && "active"}`}>
         <div className="add_question_header global-padding-sides">
           <button onClick={toggleForm}>
             <div className="arrow_wrapper">

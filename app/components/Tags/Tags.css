@@ -1,8 +1,28 @@
 .tags {
   display: flex;
   gap: 10px;
+  overflow-x: scroll;
+}
+.tags::-webkit-scrollbar {
+  display: none; /* WebKit: Hide scrollbar */
 }
 
 .tag {
   width: max-content;
+  background-color: #eef2ff;
+  color: #4c4fe8;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 15px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+.tags .tag:hover {
+  background-color: #7676d4;
+  color: #ffffff;
+}
+.tag.chosen {
+  background-color: #4c4fe8;
+  color: #ffffff;
 }
