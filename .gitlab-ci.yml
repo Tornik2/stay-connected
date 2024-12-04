@@ -7,7 +7,7 @@ variables:
   APP_DIR: "/$HOST_USER/stay_connected"
   DOCKER_IMAGE: "stay_connected:latest"
 
-.default-before-script: &default-before-script
+before_script:
   - eval $(ssh-agent -s)
   - chmod 400 "$STAGING_AREA_PRIVATE_KEY"
   - ssh-add "$STAGING_AREA_PRIVATE_KEY"
@@ -17,8 +17,6 @@ variables:
 
 build:
   stage: build
-  before_script:
-    <<: *default-before-script
   script:
     - ssh $HOST_USER@$APP_HOST "rm -rf $APP_DIR && mkdir -p $APP_DIR"
     - tar --exclude='.git' --exclude='node_modules' -czf app.tar.gz .
@@ -28,8 +26,6 @@ build:
 
 deploy:
   stage: deploy
-  before_script:
-    <<: *default-before-script
   script:
     - ssh $HOST_USER@$APP_HOST "docker stop stay_connected || true && docker rm stay_connected || true"
     - ssh $HOST_USER@$APP_HOST "docker run -d --name stay_connected -p $PORT:$PORT stay_connected:latest"
