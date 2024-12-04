@@ -5,21 +5,23 @@ stages:
 variables:
   PORT: "3000"
   APP_DIR: "/$HOST_USER/stay_connected"
+  DOCKER_IMAGE: "stay_connected:latest"
+
+.default-before-script: &default-before-script
+  - eval $(ssh-agent -s)
+  - chmod 400 "$STAGING_AREA_PRIVATE_KEY"
+  - ssh-add "$STAGING_AREA_PRIVATE_KEY"
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $APP_HOST >> ~/.ssh/known_hosts
 
 build:
   stage: build
   before_script:
-    - eval $(ssh-agent -s)
-    - chmod 400 "$STAGING_AREA_PRIVATE_KEY"
-    - ssh-add "$STAGING_AREA_PRIVATE_KEY"
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan $APP_HOST >> ~/.ssh/known_hosts
+    <<: *default-before-script
   script:
-    - echo "Building the docker image on digitalocean droplet"
-    - ssh $HOST_USER@$APP_HOST "rm -r $APP_DIR || true"
-    - ssh $HOST_USER@$APP_HOST "mkdir -p $APP_DIR"
-    - tar -czf app.tar.gz *
+    - ssh $HOST_USER@$APP_HOST "rm -rf $APP_DIR && mkdir -p $APP_DIR"
+    - tar --exclude='.git' --exclude='node_modules' -czf app.tar.gz .
     - scp app.tar.gz $HOST_USER@$APP_HOST:$APP_DIR
     - ssh $HOST_USER@$APP_HOST "cd $APP_DIR && tar -xzf app.tar.gz && rm -f app.tar.gz"
     - ssh $HOST_USER@$APP_HOST "cd $APP_DIR && docker build -t stay_connected:latest ."
@@ -27,16 +29,9 @@ build:
 deploy:
   stage: deploy
   before_script:
-    - eval $(ssh-agent -s)
-    - chmod 400 "$STAGING_AREA_PRIVATE_KEY"
-    - ssh-add "$STAGING_AREA_PRIVATE_KEY"
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan $APP_HOST >> ~/.ssh/known_hosts
+    <<: *default-before-script
   script:
-    - echo "Deploying to droplet"
     - ssh $HOST_USER@$APP_HOST "docker stop stay_connected || true && docker rm stay_connected || true"
-    - ssh $HOST_USER@$APP_HOST "cd $APP_DIR && docker run -d --name stay_connected -p $PORT:$PORT stay_connected:latest"
-
+    - ssh $HOST_USER@$APP_HOST "docker run -d --name stay_connected -p $PORT:$PORT stay_connected:latest"
   environment:
     name: production
