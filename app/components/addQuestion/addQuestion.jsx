@@ -10,7 +10,6 @@ export default function AddQUestion() {
   const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [tags, setTags] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
     text: "",
@@ -45,7 +44,7 @@ export default function AddQUestion() {
     });
   };
   /////droebit accestokeni ase
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // submit logic here
 
@@ -55,8 +54,7 @@ export default function AddQUestion() {
       text: "",
       tag: "",
     });
-    const addedQuestion = add(url, token, questionData);
-    setIsSubmitted(true);
+    const addedQuestion = await add(url, token, questionData);
     setIsFormVisible(false);
     router.push(`/questions/${addedQuestion.id}`);
   };
