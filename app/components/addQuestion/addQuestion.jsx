@@ -1,19 +1,22 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import "./addQuestion.css";
 import { add } from "./utils";
 import Tags from "../Tags/Tags";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AddQUestion() {
   const [token, setToken] = useState("");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [tags, setTags] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
     text: "",
     tag: "",
   });
+  const router = useRouter();
   useEffect(() => {
     //get cookie from server side
     const fetchCookie = async () => {
@@ -52,7 +55,10 @@ export default function AddQUestion() {
       text: "",
       tag: "",
     });
-    add(url, token, questionData);
+    const addedQuestion = add(url, token, questionData);
+    setIsSubmitted(true);
+    setIsFormVisible(false);
+    router.push(`/questions/${addedQuestion.id}`);
   };
 
   const toggleForm = () => {
