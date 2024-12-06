@@ -2,6 +2,7 @@
 import Question from "../Question/Question";
 import "./Questions.css";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useProfile } from "../../context/ProfileContext";
 import Tags from "../Tags/Tags";
 
@@ -15,7 +16,15 @@ export default function Questions({ questionData }) {
 
   if (questions) {
     questionList = questions.map((question, index) => {
-      return <Question key={index} question={question} />;
+      return (
+        <Link
+          className="question-link"
+          key={index}
+          href={`questions/${question.id}`}
+        >
+          <Question question={question} />
+        </Link>
+      );
     });
   } else {
     questionList = "";
@@ -60,6 +69,7 @@ export default function Questions({ questionData }) {
         </div>
       </div>
       <div className="questions-list">
+        #fafafa
         {questionList ? questionList : "Loading"}
       </div>
     </div>

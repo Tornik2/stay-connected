@@ -66,3 +66,11 @@
   border: 1px solid #e3e2e2;
   background-color: #fff;
 }
+
+.question-link {
+  color: #000000;
+}
+.question-link:hover {
+  text-decoration: none;
+  color: #000;
+}
