@@ -40,7 +40,7 @@
 }
 
 .question-details {
-  gap: 10px;
+  gap: 3px;
 }
 .question-title {
   font-size: 24px;
@@ -89,7 +89,7 @@
 
 .add-answer-btn {
   width: 100%;
-  background-color: rgb(138, 138, 142);
+  background-color: rgb(78, 174, 124);
   padding: 15px 45px;
   border-radius: 10px;
   color: #ffffff;
@@ -98,5 +98,5 @@
 }
 
 .add-answer-btn:hover {
-  background-color: rgba(138, 138, 142, 0.8);
+  background-color: rgba(26, 94, 59, 0.8);
 }

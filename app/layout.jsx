@@ -1,8 +1,13 @@
-import HomePage from "./page";
+import { Inter } from "next/font/google";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import "./global.css";
 import { ProfileProvider } from "./context/ProfileContext";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata = {
   title: "Stay Connected",
@@ -16,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ProfileProvider>
-          <div className="app-container">
+          <div className={`app-container ${inter.className}`}>
             <Header />
             <main>{children}</main>
             <Footer />

@@ -69,7 +69,6 @@ export default function Questions({ questionData }) {
         </div>
       </div>
       <div className="questions-list">
-        #fafafa
         {questionList ? questionList : "Loading"}
       </div>
     </div>
