@@ -99,8 +99,7 @@ export default function AddNewQuestion() {
       tag: "",
     });
     setTags([]);
-    const addedQuestion = await add(url, token, questionData);
-    router.push(`/questions/${addedQuestion.id}`);
+    router.push(`/questions/`);
   };
 
   const toggleForm = () => {
