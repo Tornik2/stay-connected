@@ -1,0 +1,57 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+.login-form h1 {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+
+.email-input,
+.password-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-form label {
+  font-size: 12px;
+}
+
+.btn {
+  padding: 15px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.btns > * {
+  width: 50%;
+}
+
+.login-btn {
+  background-color: #4e53a2;
+}
+.register-link {
+  color: #212223;
+  border: 1px solid #bbc4c9;
+  background-color: #ebf3f7;
+  width: 100%;
+}
+.register-link:hover {
+  background-color: #6f9fb7;
+  color: #ffffff;
+}

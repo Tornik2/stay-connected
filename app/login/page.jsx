@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "../context/ProfileContext";
-
+import "./login.css";
+import Link from "next/link";
 export default function Login() {
   const { fetchProfile, profile } = useProfile();
-  const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -42,7 +42,6 @@ export default function Login() {
         setLoading(false);
         const errorData = await response.json();
         console.log(errorData.error);
-        setMessage(errorData.error + ", Wrong Credentials ");
       }
     } catch (error) {
       console.log(error);
@@ -56,25 +55,40 @@ export default function Login() {
             <>LOADING</>
           ) : (
             <>
-              <div style={{ color: "red" }}>{message}</div>
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  required
-                />
-                <button type="submit">Login</button>
+              <form onSubmit={handleSubmit} className="login-form">
+                <h1> Log in</h1>
+                <div className="email-input">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="password-input">
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="btns">
+                  <button type="submit" className="btn login-btn">
+                    Login
+                  </button>
+                  <Link href={"/register"}>
+                    <button type="submit" className="btn register-link">
+                      Register
+                    </button>
+                  </Link>
+                </div>
               </form>
             </>
           )}
