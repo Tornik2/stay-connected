@@ -54,6 +54,7 @@ export default function AddQUestion() {
       text: "",
       tag: "",
     });
+    setTags([]);
     const addedQuestion = await add(url, token, questionData);
     setIsFormVisible(false);
     router.push(`/questions/${addedQuestion.id}`);

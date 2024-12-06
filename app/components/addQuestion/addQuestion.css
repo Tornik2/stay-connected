@@ -128,12 +128,17 @@ textarea:focus {
 .add-tag-input {
   position: relative;
   overflow: hidden;
+  border-radius: 5px;
+  width: 140px;
 }
 .add-tag-input p {
+  height: 100%;
   position: absolute;
   right: 0;
   top: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .add-tag-input p:hover {
   background-color: #8187d1;
