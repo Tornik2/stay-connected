@@ -12,17 +12,27 @@
   margin: 40px 0 20px;
 }
 
-.email-input,
-.password-input {
+.input-div {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .login-form label {
-  font-size: 12px;
+  font-size: 10px;
+  color: #5e6366;
 }
 
+.password-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.forgot-password:hover {
+  color: #212223;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .btn {
   padding: 15px;
   border-radius: 5px;
@@ -45,7 +55,7 @@
 .login-btn {
   background-color: #4e53a2;
 }
-.register-link {
+.btns .register-link {
   color: #212223;
   border: 1px solid #bbc4c9;
   background-color: #ebf3f7;
@@ -54,4 +64,11 @@
 .register-link:hover {
   background-color: #6f9fb7;
   color: #ffffff;
+}
+
+.password {
+  letter-spacing: 2px;
+}
+.password::placeholder {
+  font-size: 16px;
 }

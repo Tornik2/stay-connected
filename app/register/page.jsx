@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
+import "./register.css";
 
 export default function Register() {
   const [message, setMessage] = useState("Message");
@@ -62,16 +64,13 @@ export default function Register() {
   };
 
   return (
-    <>
-      <>{message}</>
-      <br />
-      <br />
-      <br />
-      <br />
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+    <div className="global-padding-sides">
+      <form onSubmit={handleSubmit} className="register-form">
+        <h1>Sign Up</h1>
+        <div className="input-div">
+          <label htmlFor="username">Username</label>
           <input
+            placeholder="Username"
             type="text"
             id="username"
             name="username"
@@ -80,9 +79,10 @@ export default function Register() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="input-div">
+          <label htmlFor="email">Email</label>
           <input
+            placeholder="Email"
             type="email"
             id="email"
             name="email"
@@ -91,9 +91,10 @@ export default function Register() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="input-div">
+          <label htmlFor="password">Enter Password</label>
           <input
+            placeholder="Password"
             type="password"
             id="password"
             name="password"
@@ -102,9 +103,10 @@ export default function Register() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password:</label>
+        <div className="input-div">
+          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
+            placeholder="Confirm Password"
             type="password"
             id="confirmPassword"
             name="confirmPassword"
@@ -113,8 +115,15 @@ export default function Register() {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <div className="btns">
+          <Link href={"/login"}>
+            <button className="btn login-link">Login</button>
+          </Link>
+          <button type="submit" className="btn register-btn">
+            Register
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }

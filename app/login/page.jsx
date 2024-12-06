@@ -57,9 +57,10 @@ export default function Login() {
             <>
               <form onSubmit={handleSubmit} className="login-form">
                 <h1> Log in</h1>
-                <div className="email-input">
-                  <label htmlFor="email">Email:</label>
+                <div className="input-div">
+                  <label htmlFor="email">Email</label>
                   <input
+                    placeholder="Enter Your Email"
                     type="text"
                     name="email"
                     id="email"
@@ -68,9 +69,16 @@ export default function Login() {
                     required
                   />
                 </div>
-                <div className="password-input">
-                  <label htmlFor="password">Password:</label>
+                <div className="input-div">
+                  <div className="password-labels">
+                    <label htmlFor="password">Password</label>
+                    <label>
+                      <p className="forgot-password">Forgot Password ?</p>
+                    </label>
+                  </div>
                   <input
+                    className="password"
+                    placeholder="••••••••"
                     type="password"
                     name="password"
                     id="password"
@@ -84,9 +92,7 @@ export default function Login() {
                     Login
                   </button>
                   <Link href={"/register"}>
-                    <button type="submit" className="btn register-link">
-                      Register
-                    </button>
+                    <button className="btn register-link">Register</button>
                   </Link>
                 </div>
               </form>
