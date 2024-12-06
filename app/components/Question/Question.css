@@ -18,6 +18,7 @@
   align-items: center;
 }
 .answer-count-date {
+  min-width: 135px;
   gap: 15px;
 }
 .answer-count-date > * {
