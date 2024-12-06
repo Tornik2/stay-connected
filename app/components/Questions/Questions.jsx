@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useProfile } from "../../context/ProfileContext";
 import { filterQuestions } from "./utils.js";
+// static tags
 const tags = ["one", "Phyton", "Front", "Back", "This", "one", "TWO", "Front"];
 
 export default function Questions({ questionData }) {
@@ -18,7 +19,6 @@ export default function Questions({ questionData }) {
   });
   let questionList = "";
 
-  filterQuestions(questions, filter);
   //initialize Questions
   useEffect(() => {
     setQuestions(questionData);
@@ -65,7 +65,12 @@ export default function Questions({ questionData }) {
   }, [newTags]);
   //Questions List
   if (questions) {
-    questionList = questions.map((question, index) => {
+    const filteredQuestions = filterQuestions(
+      questions,
+      filter,
+      profile?.username
+    );
+    questionList = filteredQuestions.map((question, index) => {
       return (
         <Link
           className="question-link"
@@ -87,10 +92,6 @@ export default function Questions({ questionData }) {
         search: e.target.value,
       };
     });
-  };
-
-  const handleTagChoosing = (updatedTags) => {
-    console.log("filter");
   };
 
   return (
