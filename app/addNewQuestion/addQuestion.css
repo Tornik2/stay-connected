@@ -36,6 +36,16 @@
   transition: 0.3s ease;
   max-width: 990px;
   transform: translateX(-50%) translateY(100%);
+  z-index: 2;
+}
+.bottom-overlay {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 50vh;
+  width: 100vw;
+  background-color: white;
 }
 
 .form_container.active {

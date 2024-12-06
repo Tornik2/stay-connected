@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 import "./addQuestion.css";
-import { add } from "./utils";
-import Tags from "../Tags/Tags";
+import { add } from "../components/addQuestion/utils.js";
+import Tags from "../components/Tags/Tags.jsx";
 import { useRouter } from "next/navigation";
 
-//URL to Post Question
 const url = "https://h5ck35.pythonanywhere.com/api/questions/";
 
-export default function AddQUestion() {
+export default function AddNewQuestion() {
   //static list of common tags
   const commonTags = [
     "Front-End",
@@ -29,9 +28,9 @@ export default function AddQUestion() {
     "Tailwind",
     "Testing",
   ];
+  const [message, setMessage] = useState("");
   const [filteredTags, setFilteredTags] = useState([]);
   const [token, setToken] = useState("");
-  const [isFormVisible, setIsFormVisible] = useState(false);
   const [tags, setTags] = useState([]);
   const [questionFormData, setQuestionFormData] = useState({
     subject: "",
@@ -78,12 +77,20 @@ export default function AddQUestion() {
         return word.toLowerCase().includes(searchTag);
       });
       setFilteredTags(tagsToShow);
+    } else {
+      setFilteredTags([]);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (
+      !questionFormData.subject ||
+      !questionFormData.text ||
+      tags.length === 0
+    ) {
+      return setMessage("Fill All The Inputs");
+    }
     // submit logic here
     const questionData = { ...questionFormData, tags };
     setQuestionFormData({
@@ -93,7 +100,6 @@ export default function AddQUestion() {
     });
     setTags([]);
     const addedQuestion = await add(url, token, questionData);
-    setIsFormVisible(false);
     router.push(`/questions/${addedQuestion.id}`);
   };
 
@@ -102,12 +108,10 @@ export default function AddQUestion() {
   };
   return (
     <div className="">
-      <button className="add_question" onClick={() => toggleForm()}>
-        <img src="/add-question.png" />
-      </button>
-      <div className={`form_container ${isFormVisible && "active"}`}>
+      <div className="bottom-overlay"></div>
+      <div className={`form_container active   max-width`}>
         <div className="add_question_header global-padding-sides">
-          <button onClick={toggleForm}>
+          <button>
             <div className="arrow_wrapper">
               <img
                 src="/go-back-arrow.png"
@@ -120,6 +124,8 @@ export default function AddQUestion() {
           <div style={{ width: "30px" }}></div>
         </div>
         <form className="Add_Question_Form global-padding-sides">
+          {message && <p className="message">{message}</p>}
+
           <div className="form-input">
             <label htmlFor="subject">Question Title:</label>
             <input
@@ -159,18 +165,22 @@ export default function AddQUestion() {
                 <p
                   className="cta-add-tag"
                   onClick={() => {
-                    setTags((prev) => {
-                      console.log(tags);
-                      return [...prev, questionFormData.tag];
-                    });
-                    setQuestionFormData((prev) => {
-                      return { ...prev, tag: "" };
-                    });
+                    if (questionFormData.tag) {
+                      setTags((prev) => {
+                        return [...prev, questionFormData.tag];
+                      });
+                      setQuestionFormData((prev) => {
+                        return { ...prev, tag: "" };
+                      });
+                      setMessage("");
+                    } else {
+                      setMessage("Tag Input is Empty");
+                    }
                   }}
                 >
                   +
                 </p>
-                {filteredTags && (
+                {filteredTags[0] && (
                   <ul className="suggest-tag-list">
                     {filteredTags.map((tag, index) => {
                       return (

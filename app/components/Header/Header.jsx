@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import "./Header.css";
-import AddQUestion from "../addQuestion/addQuestion";
 import { useProfile } from "../../context/ProfileContext";
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
@@ -17,7 +16,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="header-right-side">
-          {profile && <AddQUestion />}
+          {/* {profile && <AddQUestion />} */}
           {!profile ? (
             <div className="auth_panel">
               <Link href="/login" className="nav_login">
