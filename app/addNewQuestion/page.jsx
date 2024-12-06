@@ -98,6 +98,8 @@ export default function AddNewQuestion() {
       text: "",
       tag: "",
     });
+    const addedQuestion = await add(url, token, questionData);
+
     setTags([]);
     router.push(`/questions/`);
   };

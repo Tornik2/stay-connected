@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { useProfile } from "../../context/ProfileContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function LogoutBtn() {
   const { logout } = useProfile();
+  const router = useRouter();
   const logOut = async () => {
     try {
       await fetch("/api/logout");
       logout();
+      router.push("/login");
     } catch (error) {}
   };
   return (

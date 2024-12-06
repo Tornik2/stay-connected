@@ -39,7 +39,11 @@ button,
 a {
   outline: none;
 }
-
+input,
+textarea {
+  border-radius: 5px;
+  padding: 10px;
+}
 textarea {
   resize: none;
 }
