@@ -37,7 +37,6 @@ export default function Login() {
       });
       if (response.ok) {
         await fetchProfile();
-        router.push("/questions");
       } else {
         setLoading(false);
         const errorData = await response.json();
@@ -47,6 +46,12 @@ export default function Login() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    if (profile) {
+      router.push("/questions");
+    }
+  }, [profile]);
+
   return (
     <>
       <div className="global-padding-sides">
