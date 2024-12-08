@@ -22,7 +22,6 @@ export function ProfileProvider({ children }) {
 
       const profileData = await response.json();
       setProfile(profileData);
-      console.log(profileData);
     } catch (err) {
       setError(err.message);
     } finally {
