@@ -10,6 +10,12 @@ export default function Footer() {
             <img className="logo" src="/android-chrome-192x192.png" />
           </Link>
         </div>
+        <p
+          className="footer-copyright"
+          style={{ margin: "0", fontSize: "14px" }}
+        >
+          &copy; 2024 Your Company Name. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );
