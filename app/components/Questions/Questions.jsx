@@ -7,8 +7,27 @@ import { useProfile } from "../../context/ProfileContext";
 import { filterQuestions } from "./utils.js";
 import UserList from "../UserList/UserList.jsx";
 // static tags
-const tags = ["one", "Phyton", "Front", "Back", "This", "one", "TWO", "Front"];
-
+const tags = [
+  "Front-End",
+  "Back-End",
+  "IOS",
+  "Django",
+  "React",
+  "Redux",
+  "TypeScript",
+  "JS",
+  "JavaScript",
+  "Node",
+  "DevOPs",
+  "Logic",
+  "UI/UX",
+  "Responsive Design",
+  "Tailwind",
+  "Testing",
+  "xcode",
+  "objective-c",
+  "python",
+];
 export default function Questions({ questionData }) {
   const { profile, loading, error } = useProfile();
   const [questions, setQuestions] = useState("");

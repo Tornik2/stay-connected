@@ -5,6 +5,7 @@ import "./addQuestion.css";
 import { add } from "../components/addQuestion/utils.js";
 import Tags from "../components/Tags/Tags.jsx";
 import { useRouter } from "next/navigation";
+import Link from "next/link.js";
 
 const url = "http://164.90.165.135/api/questions/";
 
@@ -27,6 +28,9 @@ export default function AddNewQuestion() {
     "Responsive Design",
     "Tailwind",
     "Testing",
+    "xcode",
+    "objective-c",
+    "python",
   ];
   const [message, setMessage] = useState("");
   const [filteredTags, setFilteredTags] = useState([]);
@@ -104,22 +108,21 @@ export default function AddNewQuestion() {
     router.push(`/questions/`);
   };
 
-  const toggleForm = () => {
-    setIsFormVisible((prev) => !prev);
-  };
   return (
     <div className="">
       <div className="bottom-overlay"></div>
       <div className={`form_container active   max-width`}>
         <div className="add_question_header global-padding-sides">
           <button>
-            <div className="arrow_wrapper">
-              <img
-                src="/go-back-arrow.png"
-                alt="go back"
-                className="go_back_arrow"
-              />
-            </div>
+            <Link href={"/questions"}>
+              <div className="arrow_wrapper">
+                <img
+                  src="/go-back-arrow.png"
+                  alt="go back"
+                  className="go_back_arrow"
+                />
+              </div>
+            </Link>
           </button>
           <h1 className="heading">add question</h1>
           <div style={{ width: "30px" }}></div>
@@ -185,7 +188,19 @@ export default function AddNewQuestion() {
                   <ul className="suggest-tag-list">
                     {filteredTags.map((tag, index) => {
                       return (
-                        <li className="suggest-tag" key={index}>
+                        <li
+                          className="suggest-tag"
+                          onClick={() => {
+                            setFilteredTags(0);
+                            setQuestionFormData((prev) => {
+                              return {
+                                ...prev,
+                                tag: tag,
+                              };
+                            });
+                          }}
+                          key={index}
+                        >
                           {tag}
                         </li>
                       );

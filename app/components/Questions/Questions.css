@@ -1,4 +1,5 @@
 .questions-list {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -87,6 +88,7 @@
 }
 
 .tag {
+  white-space: nowrap;
   width: max-content;
   background-color: #eef2ff;
   color: #4c4fe8;

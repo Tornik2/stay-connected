@@ -163,6 +163,21 @@ textarea:focus {
   position: absolute;
   left: 0;
   top: 100%;
+  width: 100%;
+  list-style: none;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggest-tag-list li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.suggest-tag-list li:hover {
+  background-color: #4e53a2;
+  color: #ffffff;
 }
 
 .message {
@@ -170,4 +185,7 @@ textarea:focus {
   top: -7px;
   left: 20px;
   color: red;
+}
+
+.suggest-tag-list {
 }
