@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useProfile } from "../../context/ProfileContext";
 import { filterQuestions } from "./utils.js";
+import UserList from "../UserList/UserList.jsx";
 // static tags
 const tags = ["one", "Phyton", "Front", "Back", "This", "one", "TWO", "Front"];
 
@@ -96,6 +97,7 @@ export default function Questions({ questionData }) {
 
   return (
     <div style={{ width: "100%" }}>
+      <UserList />
       <div className="section_heading">
         <img src="/assets/go-back-arrow.svg" alt="breadcrums-arrow" />
         <h2 className="section_name">Questions</h2>
