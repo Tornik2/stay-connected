@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 export async function GET(request) {
   const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  const accessToken = cookieStore.get("access_token")?.value;
 
   if (!accessToken) {
     return NextResponse.json(
@@ -13,16 +13,13 @@ export async function GET(request) {
   }
 
   try {
-    const response = await fetch(
-      "https://h5ck35.pythonanywhere.com/api/profiles/",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`, // Add Bearer token to headers
-        },
-      }
-    );
+    const response = await fetch("http://46.101.132.49/api/profiles/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`, // Add Bearer token to headers
+      },
+    });
 
     if (!response.ok) {
       return NextResponse.json(

@@ -4,14 +4,11 @@ export async function POST(req) {
   const { email, password } = await req.json();
 
   try {
-    const response = await fetch(
-      "https://h5ck35.pythonanywhere.com/api/token/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      }
-    );
+    const response = await fetch("http://46.101.132.49/api/token/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
 
     if (!response.ok) {
       return NextResponse.json(
@@ -29,7 +26,7 @@ export async function POST(req) {
       accessToken: access,
       refreshToken: refresh,
     });
-    nextResponse.cookies.set("accessToken", access, {
+    nextResponse.cookies.set("access_token", access, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "Strict", // Prevent CSRF  F?

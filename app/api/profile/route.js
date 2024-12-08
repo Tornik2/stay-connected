@@ -4,13 +4,13 @@ import { cookies } from "next/headers";
 export async function GET(request) {
   try {
     const cookieStore = await cookies();
-    const accessToken = await cookieStore.get("accessToken")?.value; // accessToken
+    const accessToken = await cookieStore.get("access_token")?.value; // accessToken
     if (!accessToken) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
 
     const response = await fetch(
-      "https://h5ck35.pythonanywhere.com/api/profiles/my-profile/",
+      "http://46.101.132.49/api/profiles/my-profile/",
       {
         method: "GET",
         headers: {

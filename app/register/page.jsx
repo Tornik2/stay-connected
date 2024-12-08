@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import "./register.css";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [message, setMessage] = useState("Message");
@@ -11,6 +12,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+  const router = useRouter();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -28,21 +30,18 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch(
-        "https://h5ck35.pythonanywhere.com/api/register/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formData.username,
-            email: formData.email,
-            password: formData.password,
-            password_confirm: formData.confirmPassword,
-          }),
-        }
-      );
+      const response = await fetch("http://46.101.132.49/api/register/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+          password_confirm: formData.confirmPassword,
+        }),
+      });
 
       if (response.ok) {
         const result = await response.json();
@@ -52,6 +51,7 @@ export default function Register() {
         setMessage(
           result.message || "Registration successful! And Youre Logged in"
         );
+        router.push("/questions");
       } else {
         const errorData = await response.json();
         console.log(errorData);
