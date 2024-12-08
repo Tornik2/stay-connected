@@ -5,7 +5,7 @@ export const fetchQuestion = async (id) => {
       const question = await response.json();
       return question;
     } else {
-      console.error("Failed to fetch question, status:", response.status);
+      console.warn(`Question was not found.`);
       return null;
     }
   } catch (error) {
