@@ -20,5 +20,12 @@ export async function middleware(request) {
 
 // Protected Routes
 export const config = {
-  matcher: ["/", "/questions", "/login", "/register"],
+  matcher: [
+    "/",
+    "/questions",
+    "/login",
+    "/register",
+    "/addNewQuestion",
+    "/questions/:id",
+  ],
 };
