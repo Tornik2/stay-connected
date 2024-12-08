@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
-  console.log(pathname);
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
   // If no access token, redirect to the login page
