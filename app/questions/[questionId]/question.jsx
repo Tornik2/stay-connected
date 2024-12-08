@@ -116,7 +116,7 @@ export default function QuestionPage({ question }) {
         <div className="section-heading">
           <Link className="go-back-link" href={"/questions"}>
             <svg
-              class="go-back-arrow"
+              className="go-back-arrow"
               data-v-562b0aec=""
               width="16"
               height="16"

@@ -47,7 +47,6 @@ export default function Register() {
         const result = await response.json();
         const token = result.tokens.access;
         document.cookie = `access_token=${token}`;
-        console.log(result);
         setMessage(
           result.message || "Registration successful! And Youre Logged in"
         );

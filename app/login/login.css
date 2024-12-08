@@ -83,3 +83,17 @@
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   border: 1px solid #89bbda;
 }
+
+.login-error {
+  width: 120px;
+  color: red;
+  position: absolute;
+  margin: 0 auto;
+  top: 15%;
+  left: calc(50% - 60px);
+}
+
+.loading {
+  margin: 60px auto;
+  font-size: 30px;
+}

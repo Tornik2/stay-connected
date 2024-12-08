@@ -7,6 +7,7 @@ import Link from "next/link";
 export default function Login() {
   const { fetchProfile, profile } = useProfile();
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +23,7 @@ export default function Login() {
 
   //Submit
   const handleSubmit = async (e) => {
+    setMessage("");
     setLoading(true);
     e.preventDefault();
     try {
@@ -39,10 +41,12 @@ export default function Login() {
         await fetchProfile();
       } else {
         setLoading(false);
+        setMessage("Couldn't Log In");
         const errorData = await response.json();
         console.log(errorData.error);
       }
     } catch (error) {
+      setMessage("Couldn't Log In");
       console.log(error);
     }
   };
@@ -56,8 +60,9 @@ export default function Login() {
     <>
       <div className="global-padding-sides">
         <div className="container max-width">
+          {message && <p className="login-error">{message}</p>}
           {loading ? (
-            <>LOADING</>
+            <p className="loading">...LOADING</p>
           ) : (
             <>
               <form onSubmit={handleSubmit} className="login-form">
