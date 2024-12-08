@@ -115,7 +115,7 @@
 }
 @media (min-width: 769px) {
   .answers-list {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .answer-info-wrapper {
