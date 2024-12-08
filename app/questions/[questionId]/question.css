@@ -89,14 +89,62 @@
 
 .question-page .add-answer-btn {
   width: 100%;
-  background-color: rgb(78, 174, 124);
+  background-color: #4eae7c;
   padding: 15px 45px;
   border-radius: 10px;
   color: #ffffff;
   font-size: 16px;
+}
+.add-answer-btn:hover {
+  background-color: rgba(104, 195, 148, 0.8);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Normal shadow */
 }
+.add-answer-btn:disabled {
+  background-color: rgba(129, 206, 166, 0.8);
+  box-shadow: none;
+}
 
-.question-page .add-answer-btn:hover {
-  background-color: rgba(26, 94, 59, 0.8);
+/* answers List */
+.answers .heading {
+  font-size: 20px;
+  margin: 15px 0;
+}
+.answers-list {
+  display: grid;
+  gap: 15px;
+}
+@media (min-width: 769px) {
+  .answers-list {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+.answer-info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.answer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.answer-user {
+  color: #000000;
+  font-weight: 700;
+  font-size: 14px;
+}
+.answer-date {
+  color: #8a8a8e;
+  font-size: 10px;
+}
+.profile-picture {
+  width: 50px;
+  border-radius: 50%;
+}
+.single-answer {
+  padding: 10px;
+}
+
+.answer-textarea {
+  font-family: "inter", sans-serif;
 }

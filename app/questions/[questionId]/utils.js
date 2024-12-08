@@ -1,11 +1,8 @@
 export const fetchQuestion = async (id) => {
   try {
-    const response = await fetch(
-      `https://h5ck35.pythonanywhere.com/api/questions/${id}`
-    );
+    const response = await fetch(`http://164.90.165.135/api/questions/${id}`);
     if (response.ok) {
       const question = await response.json();
-      console.log(question);
       return question;
     } else {
       console.error("Failed to fetch question, status:", response.status);

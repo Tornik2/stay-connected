@@ -3,8 +3,6 @@ import "./Question.css";
 import Tags from "../Tags/Tags";
 
 export default function Question({ question }) {
-  const [isHovered, setIsHovered] = useState(false); // to change tags style while hovering
-
   const {
     answers,
     created_at,
@@ -39,8 +37,8 @@ export default function Question({ question }) {
     padding: "5px 10px",
     fontWeight: "500",
     fontSize: "14px",
-    backgroundColor: isHovered && "#eef2ff",
-    color: isHovered && "#4c4fe8",
+    backgroundColor: "#eef2ff",
+    color: "#4c4fe8",
   };
 
   return (
@@ -53,11 +51,7 @@ export default function Question({ question }) {
         <p className="question-description ellipsis">{text}</p>
       </div>
       <div className="bottom-third">
-        <div
-          className="question-tags"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
+        <div className="question-tags">
           <Tags tags={tagList} tagStyle={tagStyle} />
         </div>
         <div className="answer-count-date">
