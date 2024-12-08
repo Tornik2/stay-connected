@@ -26,6 +26,12 @@ header {
 .nav_login {
   font-size: 16px;
   color: #d3d4e8;
+  padding: 5px;
+  border: 1px solid transparent;
+}
+.nav_register:hover,
+.nav_login:hover {
+  border: 1px solid #d3d4e8;
 }
 
 a:hover {

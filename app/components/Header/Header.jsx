@@ -16,7 +16,11 @@ export default function Header() {
           </Link>
         </div>
         <div className="header-right-side">
-          {/* {profile && <AddQUestion />} */}
+          {
+            <Link href={"/addNewQuestion"} className="nav_login">
+              Add New Question
+            </Link>
+          }
           {!profile ? (
             <div className="auth_panel">
               <Link href="/login" className="nav_login">
