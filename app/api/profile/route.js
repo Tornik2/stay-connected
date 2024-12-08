@@ -10,7 +10,7 @@ export async function GET(request) {
     }
 
     const response = await fetch(
-      "http://46.101.132.49/api/profiles/my-profile/",
+      "http://164.90.165.135/api/profiles/my-profile/",
       {
         method: "GET",
         headers: {

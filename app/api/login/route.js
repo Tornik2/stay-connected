@@ -4,7 +4,7 @@ export async function POST(req) {
   const { email, password } = await req.json();
 
   try {
-    const response = await fetch("http://46.101.132.49/api/token/", {
+    const response = await fetch("http://164.90.165.135/api/token/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

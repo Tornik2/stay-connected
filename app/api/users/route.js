@@ -13,7 +13,7 @@ export async function GET(request) {
   }
 
   try {
-    const response = await fetch("http://46.101.132.49/api/profiles/", {
+    const response = await fetch("http://164.90.165.135/api/profiles/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

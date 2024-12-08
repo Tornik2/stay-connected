@@ -3,7 +3,7 @@ import "./questions.css";
 import { fetchQuestions } from "./utils.js";
 
 export default async function questions() {
-  const url = "http://46.101.132.49/api/questions/";
+  const url = "http://164.90.165.135/api/questions/";
   const questionData = await fetchQuestions(url);
   return (
     <>
