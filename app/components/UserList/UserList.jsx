@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 export default function UserList() {
   const [users, setUsers] = useState([]);
+  console.log(users);
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch("/api/users");

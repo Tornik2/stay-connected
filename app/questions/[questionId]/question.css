@@ -1,5 +1,5 @@
 /* section heading */
-.go-back-link {
+.question-page .go-back-link {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -8,20 +8,20 @@
   margin-bottom: 15px;
 }
 
-.go-back-arrow {
+.question-page .go-back-arrow {
   transform: rotate(180deg);
   z-index: 0;
 }
 
-.go-back-link:hover .go-back-arrow {
+.question-page .go-back-link:hover .go-back-arrow {
   fill: gray;
 }
-.go-back-link:hover {
+.question-page .go-back-link:hover {
   color: gray;
 }
 
 /* question container */
-.question-container {
+.question-page .question-container {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 15px;
   padding: 15px;
@@ -32,46 +32,46 @@
 }
 
 /* question heading */
-.question-heading,
-.question-details {
+.question-page .question-heading,
+.question-page .question-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.question-details {
+.question-page .question-details {
   gap: 3px;
 }
-.question-title {
+.question-page .question-title {
   font-size: 24px;
   line-height: 1.4;
   color: #8a8a8e;
 }
-.likes,
-.author,
-.created-at {
+.question-page .likes,
+.question-page .author,
+.question-page .created-at {
   font-size: 14px;
   line-height: 1.5;
   color: #5e6366;
 }
 
 /* question-description */
-.question-description {
+.question-page .question-description {
   line-height: 1.8;
   font-size: 14px;
   color: #000000;
 }
 
 /* Answers */
-.answers {
+.question-page .answers {
   margin-bottom: 15px;
 }
-.answers > .heading {
+.question-page .answers > .heading {
   color: #000000;
 }
 
 /* add answer */
-.add-answer textarea {
+.question-page .add-answer textarea {
   width: 100%;
   height: 85px;
   resize: none;
@@ -82,12 +82,12 @@
   margin-bottom: 10px;
 }
 
-.add-answer textarea:focus {
+.question-page .add-answer textarea:focus {
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
   background-color: rgb(244, 241, 236);
 }
 
-.add-answer-btn {
+.question-page .add-answer-btn {
   width: 100%;
   background-color: rgb(78, 174, 124);
   padding: 15px 45px;
@@ -97,6 +97,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Normal shadow */
 }
 
-.add-answer-btn:hover {
+.question-page .add-answer-btn:hover {
   background-color: rgba(26, 94, 59, 0.8);
 }

@@ -24,7 +24,7 @@ export default function QuestionPage({ question }) {
   console.log(formatedDate);
 
   return (
-    <div className="global-padding-sides">
+    <div className="question-page global-padding-sides">
       <div className="max-width">
         <div className="section-heading">
           <Link className="go-back-link" href={"/questions"}>
