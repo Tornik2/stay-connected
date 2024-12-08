@@ -4,6 +4,7 @@
   gap: 10px;
   background-color: #fafafa;
   padding: 16px;
+  border-radius: 10px;
 }
 
 .section_heading {
@@ -103,4 +104,16 @@
 .tag.chosen {
   background-color: #4c4fe8;
   color: #ffffff;
+}
+
+.questions-users-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 769px) {
+  .questions-users-wrapper {
+    flex-direction: row;
+    gap: 10px;
+  }
 }

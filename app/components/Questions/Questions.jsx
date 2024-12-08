@@ -97,7 +97,6 @@ export default function Questions({ questionData }) {
 
   return (
     <div style={{ width: "100%" }}>
-      <UserList />
       <div className="section_heading">
         <img src="/assets/go-back-arrow.svg" alt="breadcrums-arrow" />
         <h2 className="section_name">Questions</h2>
@@ -150,8 +149,11 @@ export default function Questions({ questionData }) {
           <div className="tags">{tagList}</div>
         </div>
       </div>
-      <div className="questions-list">
-        {questionList ? questionList : "Loading"}
+      <div className="questions-users-wrapper">
+        <div className="questions-list">
+          {questionList ? questionList : "Loading"}
+        </div>
+        <UserList />
       </div>
     </div>
   );
