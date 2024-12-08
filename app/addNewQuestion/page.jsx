@@ -6,7 +6,7 @@ import { add } from "../components/addQuestion/utils.js";
 import Tags from "../components/Tags/Tags.jsx";
 import { useRouter } from "next/navigation";
 
-const url = "https://h5ck35.pythonanywhere.com/api/questions/";
+const url = "http://164.90.165.135/api/questions/";
 
 export default function AddNewQuestion() {
   //static list of common tags
