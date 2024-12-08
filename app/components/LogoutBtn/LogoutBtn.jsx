@@ -9,7 +9,7 @@ export default function LogoutBtn() {
     try {
       await fetch("/api/logout");
       logout();
-      router.push("/login");
+      window.location.href = "/login";
     } catch (error) {}
   };
   return (

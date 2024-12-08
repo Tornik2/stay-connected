@@ -48,7 +48,7 @@ export default function Login() {
   };
   useEffect(() => {
     if (profile) {
-      router.push("/questions");
+      window.location.href = "/questions";
     }
   }, [profile]);
 
