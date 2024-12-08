@@ -1,7 +1,14 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 export default function HomePage() {
-  return (
-    <div className="padding-global-sides">
-      <div className=" container max-width">opa</div>
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/questions");
+  }, [router]);
+
+  return null;
 }
